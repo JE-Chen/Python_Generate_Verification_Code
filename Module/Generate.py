@@ -95,6 +95,3 @@ class Generate():
         Image_Data = "data:image/jpeg;base64,{data}".format(data=Data)
         return Vaild,Image_Data
 
-if __name__ == "__main__":
-    g = Generate()
-    print(g.Generate_Base64_Image(True))
