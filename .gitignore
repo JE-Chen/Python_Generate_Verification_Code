@@ -131,3 +131,4 @@ dmypy.json
 #myself 
 Module/_pycache__/
 Core/_pycache__/
+*.pyc
