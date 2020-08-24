@@ -130,3 +130,4 @@ dmypy.json
 
 # Myself edit
 *.pyc
+Core/__pycache__/
