@@ -129,6 +129,5 @@ dmypy.json
 .pyre/
 
 # Myself edit
-*.pyc
-Core/__pycache__/
-Module/__pycache__/
+Core/__pycache__/*.pyc
+Module/__pycache__/*.pyc
