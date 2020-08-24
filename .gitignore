@@ -128,7 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#myself 
-Module/_pycache__/
-Core/_pycache__/
+# Myself edit
 *.pyc
