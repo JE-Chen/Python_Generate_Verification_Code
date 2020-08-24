@@ -29,6 +29,14 @@ class Generate():
         Low_Aplha = chr(random.randint(97,122))
         return random.choice([Num,Low_Aplha])
 
+    def Generate_Code_OnlyString(self,Count):
+        Temp=[]
+        for i in range(Count):
+            Chars=self.Generate_String()
+            Temp.append(Chars)
+        Vaild="".join(Temp)
+        return Vaild
+
     def Generate_Code(self,Count,Image,Font_Size):
         """
         :param Count: Code Count
