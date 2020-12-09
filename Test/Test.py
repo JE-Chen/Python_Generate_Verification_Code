@@ -1,9 +1,8 @@
-from Core.Code_Core import Code_Core
+from Core.VerificationCodeCore import VerificationCodeCore
 
-g = Code_Core()
-Code = g.Generate.Generate_Base64_Image(True)
+g = VerificationCodeCore()
+Code = g.GenerateVerificationCode.generate_base64_image(True)
 print(Code[0])
 print(Code[1])
 
-print(g.Generate.Generate_Code_OnlyString(5))
-
+print(g.GenerateVerificationCode.generate_code_only_string(5))

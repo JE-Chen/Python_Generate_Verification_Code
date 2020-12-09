@@ -1,105 +1,108 @@
-import random
-import os
 import base64
-
+import os
+import random
 from io import BytesIO
-from PIL import Image,ImageDraw,ImageFont
 
-class Generate():
+from PIL import Image, ImageDraw, ImageFont
 
-    def Generate_Color(self,R=255,G=255,B=255):
+
+class GenerateVerificationCode:
+
+    @staticmethod
+    def generate_color(color_r=255, color_g=255, color_b=255):
         """
-        :param R: Color R
-        :param G: Color G
-        :param B: Color B
+        :param color_r: Color R
+        :param color_g: Color G
+        :param color_b: Color B
         :return: R,G,B
         """
-        return random.randint(0,R),random.randint(0,G),random.randint(0,B)
+        return random.randint(0, color_r), random.randint(0, color_g), random.randint(0, color_b)
 
-    def Generate_Picture(self,Width=175,Height=55):
+    def generate_picture(self, picture_width=175, picture_height=55):
         """
-        :param Width: Image Width
-        :param Height: Image Height
+        :param picture_width: Image Width
+        :param picture_height: Image Height
         :return: Picture with color
         """
-        return Image.new('RGB',(Width,Height),self.Generate_Color())
+        return Image.new('RGB', (picture_width, picture_height), self.generate_color())
 
-    def Generate_String(self):
-        Num = str(random.randint(0,9))
-        Low_Aplha = chr(random.randint(97,122))
-        return random.choice([Num,Low_Aplha])
+    @staticmethod
+    def generate_string():
+        num = str(random.randint(0, 9))
+        low_alpha = chr(random.randint(97, 122))
+        return random.choice([num, low_alpha])
 
-    def Generate_Code_OnlyString(self,Count):
-        Temp=[]
-        for i in range(Count):
-            Chars=self.Generate_String()
-            Temp.append(Chars)
-        Vaild="".join(Temp)
-        return Vaild
+    def generate_code_only_string(self, count):
+        temp = []
+        for i in range(count):
+            chars = self.generate_string()
+            temp.append(chars)
+        valid = "".join(temp)
+        return valid
 
-    def Generate_Code(self,Count,Image,Font_Size):
+    def generate_code(self, count, image, font_size):
         """
-        :param Count: Code Count
-        :param Image: Draw Code Image
-        :param Font_Size: Font's size
+        :param count: Code Count
+        :param image: draw Code Image
+        :param font_size: font's size
         :return: Code picture
         """
-        Draw = ImageDraw.Draw(Image)
-        Font_File = os.path.join('../Font/arial.ttf')
-        Font=ImageFont.truetype(Font_File,size=Font_Size)
-        Temp=[]
-        for i in range(Count):
-            Chars=self.Generate_String()
-            Draw.text((10+i*30,-2),Chars,self.Generate_Color(),Font)
-            Temp.append(Chars)
-        Vaild="".join(Temp)
-        return Vaild,Image
+        draw = ImageDraw.Draw(image)
+        font_file = os.path.join('../font/arial.ttf')
+        font = ImageFont.truetype(font_file, size=font_size)
+        temp = []
+        for i in range(count):
+            chars = self.generate_string()
+            draw.text((10 + i * 30, -2), chars, self.generate_color(), font)
+            temp.append(chars)
+        valid = "".join(temp)
+        return valid, image
 
-    def Generate_Noise(self,Image,Width=175,Height=55,Line_Count=3,Point_Count=15):
+    def generate_noise(self, image, picture_width=175, picture_height=55, line_count=3, point_count=15):
         """
-        :param Image: Noise Image
-        :param Width: Image Width
-        :param Height: Image Hieght
-        :param Line_Count: Line's count
-        :param Point_Count: Point's count
+        :param image: Noise Image
+        :param picture_width: Image Width
+        :param picture_height: Image Hieght
+        :param line_count: Line's count
+        :param point_count: Point's count
         :return: After Noise Image
         """
 
-        Draw = ImageDraw.Draw(Image)
+        draw = ImageDraw.Draw(image)
 
-        #Draw Line
-        for i in range(Line_Count):
-            x1 = random.randint(0, Width)
-            x2 = random.randint(0, Width)
-            y1 = random.randint(0, Height)
-            y2 = random.randint(0, Height)
-            Draw.line((x1, y1, x2, y2), fill=self.Generate_Color())
+        # draw Line
+        for i in range(line_count):
+            x1 = random.randint(0, picture_width)
+            x2 = random.randint(0, picture_width)
+            y1 = random.randint(0, picture_height)
+            y2 = random.randint(0, picture_height)
+            draw.line((x1, y1, x2, y2), fill=self.generate_color())
 
-            #Draw Point
-            for i in range(Point_Count):
-                Draw.point([random.randint(0, Width), random.randint(0, Height)], fill=self.Generate_Color())
-                x = random.randint(0, Width)
-                y = random.randint(0, Height)
-                Draw.arc((x, y, x + 4, y + 4), 0, 90, fill=self.Generate_Color())
+            # draw Point
+            for point in range(point_count):
+                draw.point([random.randint(0, picture_width), random.randint(0, picture_height)],
+                           fill=self.generate_color())
+                x = random.randint(0, picture_width)
+                y = random.randint(0, picture_height)
+                draw.arc((x, y, x + 4, y + 4), 0, 90, fill=self.generate_color())
 
-        return Image
+        return image
 
-    def Generate_Base64_Image(self,Save=False):
+    def generate_base64_image(self, save=False):
 
-        Code_Image = self.Generate_Picture()
-        Vaild,Code_Image = self.Generate_Code(5,Code_Image,40)
-        Code_Image = self.Generate_Noise(Code_Image)
+        code_image = self.generate_picture()
+        valid, code_image = self.generate_code(5, code_image, 40)
+        code_image = self.generate_noise(code_image)
 
-        if Save:
-            Code_Image.save('Code_Image.png')
+        if save:
+            code_image.save('code_image.png')
 
-        Bytes = BytesIO()
-        Code_Image.save(Bytes,'png')
-        Data = Bytes.getvalue()
-        Bytes.close()
+        bytes = BytesIO()
+        code_image.save(bytes, 'png')
+        data = bytes.getvalue()
+        bytes.close()
 
-        Encode64 = base64.b64encode(Data)
-        Data = str(Encode64,encoding='utf-8')
-        Image_Data = "data:image/jpeg;base64,{data}".format(data=Data)
-        return Vaild,Image_Data
-
+        encode64 = base64.b64encode(data)
+        data = str(encode64, encoding='utf-8')
+        image_data = "data:image/jpeg;base64,{data}".format(data=data)
+        return valid, image_data
