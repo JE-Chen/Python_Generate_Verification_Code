@@ -1,8 +1,8 @@
-from JEVerificationCode.Core import VerificationCodeCore
+import JEVerificationCode
 
-g = VerificationCodeCore()
-Code = g.GenerateVerificationCode.generate_base64_image(True)
+g = JEVerificationCode.GenerateVerificationCode()
+Code = g.generate_base64_image(True)
 print(Code[0])
 print(Code[1])
 
-print(g.GenerateVerificationCode.generate_code_only_string(5))
+print(g.generate_code_only_string(5))
