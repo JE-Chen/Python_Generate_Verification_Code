@@ -1,25 +1,28 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.2.1
+  win: circleci/windows@2.2.0
 
 jobs:
   build-and-test:
-    executor: python/default
+    executor:
+      name: win/default
+      shell: powershell.exe
+
     steps:
-      - checkout
-      - run:
-          command: pip install --user JEVerificationCode
-          name: pip JEVerificationCode
-      - run:
-          command: pip install --user Pillow
-          name: pip Pillow
-      - run:
-          command: python Test/Test.py
-          name: Test
-      - run:
-          command: python Test/UnitTest.py
-          name: UnitTest
+        - checkout
+        - run:
+            command: pip install --user JEVerificationCode
+            name: pip JEVerificationCode
+        - run:
+            command: pip install --user Pillow
+            name: pip Pillow
+        - run:
+            command: python Test/Test.py
+            name: Test
+        - run:
+            command: python Test/UnitTest.py
+            name: UnitTest
 
 workflows:
   main:
