@@ -48,7 +48,7 @@ class GenerateVerificationCode:
         :return: Code picture
         """
         draw = ImageDraw.Draw(image)
-        font_file = os.path.join('../Font/arial.ttf')
+        font_file = os.path.join('arial.ttf')
         font = ImageFont.truetype(font_file, size=font_size)
         temp = []
         for i in range(count):
