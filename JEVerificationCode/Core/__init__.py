@@ -1,1 +1,1 @@
-from VerificationCodeCore import *
+from JEVerificationCode.Core.VerificationCodeCore import *
