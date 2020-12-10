@@ -1,16 +1,18 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@2.2.0
+  python: circleci/python@1.3.0
 
 jobs:
   build-and-test:
     executor:
-      name: win/default
-      shell: powershell.exe
+      name: python/default
 
     steps:
         - checkout
+        - run:
+            command: sudo apt-get install libfontconfig1
+            name: Install Font
         - run:
             command: pip install --user JEVerificationCode
             name: pip JEVerificationCode
