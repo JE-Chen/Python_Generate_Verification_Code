@@ -12,6 +12,9 @@ jobs:
           command: pip install --user JEVerificationCode
           name: pip JEVerificationCode
       - run:
+          command: pip install --user Pillow
+          name: pip Pillow
+      - run:
           command: python Test/Test.py
           name: Test
       - run:
