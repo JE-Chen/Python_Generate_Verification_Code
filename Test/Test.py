@@ -1,4 +1,4 @@
-from Core.VerificationCodeCore import VerificationCodeCore
+from JEVerificationCode.Core import VerificationCodeCore
 
 g = VerificationCodeCore()
 Code = g.GenerateVerificationCode.generate_base64_image(True)

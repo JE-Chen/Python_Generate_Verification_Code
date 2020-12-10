@@ -1,6 +1,6 @@
 import datetime
 
-from Module.Generate import GenerateVerificationCode
+from JEVerificationCode.Module.Generate import GenerateVerificationCode
 
 
 class VerificationCodeCore:
