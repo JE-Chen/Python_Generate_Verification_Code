@@ -12,8 +12,14 @@ class GenerateVerification(unittest.TestCase):
         pass
 
     @staticmethod
-    def testGenerate():
+    def testGenerateOnlyString():
         JEVerificationCode.GenerateVerificationCode().generate_code_only_string(5)
+
+    @staticmethod
+    def testGenerate():
+        g = JEVerificationCode.GenerateVerificationCode().generate_base64_image(True)
+        print(g[0])
+        print(g[1])
 
 
 if __name__ == '__main__':
