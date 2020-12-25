@@ -1,6 +1,5 @@
 import base64
 import os
-import platform
 import random
 from io import BytesIO
 
@@ -49,10 +48,7 @@ class GenerateVerificationCode:
         :return: Code picture
         """
         draw = ImageDraw.Draw(image)
-        if platform.system() == 'Windows':
-            font_file = os.path.join('arial.ttf')
-        else:
-            font_file = os.path.join('FreeMono.ttf')
+        font_file = os.path.join('arial.ttf')
         font = ImageFont.truetype(font_file, size=font_size)
         temp = []
         for i in range(count):
