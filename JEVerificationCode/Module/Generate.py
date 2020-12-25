@@ -99,14 +99,14 @@ class GenerateVerificationCode:
         code_image = self.generate_noise(code_image)
 
         if save:
-            code_image.save('code_image.png')
+            code_image.save('code_image.jpeg')
 
         byte = BytesIO()
-        code_image.save(byte, 'png')
+        code_image.save(byte, 'jpeg')
         data = byte.getvalue()
         byte.close()
 
         encode64 = base64.b64encode(data)
         data = str(encode64, encoding='utf-8')
-        image_data = "data:image/png;base64,{data}".format(data=data)
+        image_data = "data:image/jpeg;base64,{data}".format(data=data)
         return valid, image_data
