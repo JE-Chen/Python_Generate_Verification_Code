@@ -17,6 +17,12 @@ jobs:
             command: pip install --user JEVerificationCode
             name: pip JEVerificationCode
         - run:
+            command: pip install --user matplotlib
+            name: pip matplotlib
+        - run:
+            command: pip install --user Numpy
+            name: pip Numpy
+        - run:
             command: pip install --user Pillow
             name: pip Pillow
         - run:

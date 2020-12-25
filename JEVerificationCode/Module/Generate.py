@@ -3,6 +3,7 @@ import os
 import random
 from io import BytesIO
 
+import matplotlib.font_manager as fm
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -49,7 +50,10 @@ class GenerateVerificationCode:
         """
         draw = ImageDraw.Draw(image)
         font_file = os.path.join('arial.ttf')
-        font = ImageFont.truetype(font_file, size=font_size)
+        try:
+            font = ImageFont.truetype(font_file, size=font_size)
+        except OSError:
+            font = ImageFont.truetype(fm.findfont(fm.FontProperties(family='DejaVu Sans')), fontsize)
         temp = []
         for i in range(count):
             chars = self.generate_string()
