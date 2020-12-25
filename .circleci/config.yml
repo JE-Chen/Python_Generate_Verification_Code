@@ -20,6 +20,9 @@ jobs:
             command: pip install --user Pillow
             name: pip Pillow
         - run:
+            command: python Test/Test.py
+            name: Test
+        - run:
             command: python Test/UnitTest.py
             name: UnitTest
 
