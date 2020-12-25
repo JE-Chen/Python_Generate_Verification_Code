@@ -14,6 +14,9 @@ jobs:
             command: sudo apt update
             name: update apt
         - run:
+            command: sudo apt install fontconfig
+            name: install fontconfig
+        - run:
             command: sudo apt-get install libfontconfig1
             name: Install Font
         - run:
