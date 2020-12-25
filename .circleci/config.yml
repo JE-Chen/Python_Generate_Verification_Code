@@ -26,6 +26,9 @@ jobs:
             command: sudo fc-cache -f -v
             name: update the font cache
         - run:
+            command: sudo fc-match Arial
+            name: fc-match Arial
+        - run:
             command: pip install --user JEVerificationCode
             name: pip JEVerificationCode
         - run:
