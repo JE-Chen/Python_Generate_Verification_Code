@@ -52,7 +52,7 @@ class GenerateVerificationCode:
         if platform.system() == 'Windows':
             font_file = os.path.join('arial.ttf')
         else:
-            font_file = os.path.join('/usr/share/fonts/truetype/freefont/FreeMono.ttf')
+            font_file = os.path.join('FreeMono.ttf')
         font = ImageFont.truetype(font_file, size=font_size)
         temp = []
         for i in range(count):
