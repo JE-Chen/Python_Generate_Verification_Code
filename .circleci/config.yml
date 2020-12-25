@@ -20,6 +20,9 @@ jobs:
             command: sudo apt install ttf-mscorefonts-installer
             name: Install Font
         - run:
+            command: sudo fc-cache -f -v
+            name: update the font cache
+        - run:
             command: pip install --user JEVerificationCode
             name: pip JEVerificationCode
         - run:
