@@ -5,12 +5,6 @@ import JEVerificationCode
 
 class GenerateVerification(unittest.TestCase):
 
-    def setUp(self) -> None:
-        pass
-
-    def tearDown(self) -> None:
-        pass
-
     @staticmethod
     def testGenerateOnlyString():
         JEVerificationCode.GenerateVerificationCode().generate_code_only_string(5)

@@ -88,10 +88,10 @@ class GenerateVerificationCode:
 
         return image
 
-    def generate_base64_image(self, save=False):
+    def generate_base64_image(self, code_count, font_size, save=False):
 
         code_image = self.generate_picture()
-        valid, code_image = self.generate_code(5, code_image, 40)
+        valid, code_image = self.generate_code(code_count, code_image, font_size)
         code_image = self.generate_noise(code_image)
 
         if save:
