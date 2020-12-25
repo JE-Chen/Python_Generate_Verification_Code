@@ -53,7 +53,7 @@ class GenerateVerificationCode:
         try:
             font = ImageFont.truetype(font_file, size=font_size)
         except OSError:
-            font = ImageFont.truetype(fm.findfont(fm.FontProperties(family='DejaVu Sans')), fontsize)
+            font = ImageFont.truetype(fm.findfont(fm.FontProperties(family='DejaVu Sans')), font_size)
         temp = []
         for i in range(count):
             chars = self.generate_string()
