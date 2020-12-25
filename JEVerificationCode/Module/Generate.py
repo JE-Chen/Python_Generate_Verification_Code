@@ -108,5 +108,5 @@ class GenerateVerificationCode:
 
         encode64 = base64.b64encode(data)
         data = str(encode64, encoding='utf-8')
-        image_data = "data:image/jpeg;base64,{data}".format(data=data)
+        image_data = "data:image/png;base64,{data}".format(data=data)
         return valid, image_data
