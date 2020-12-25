@@ -14,6 +14,9 @@ jobs:
             command: sudo apt-get install libfontconfig1
             name: Install Font
         - run:
+            command: sudo apt-get install ttf-mscorefonts-installer
+            name: Install Font
+        - run:
             command: pip install --user JEVerificationCode
             name: pip JEVerificationCode
         - run:
