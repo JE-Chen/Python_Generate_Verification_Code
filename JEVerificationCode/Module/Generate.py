@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 class GenerateVerificationCode:
 
     @staticmethod
-    def generate_color(color_r=255, color_g=255, color_b=255):
+    def generate_color(color_r: int = 255, color_g: int = 255, color_b: int = 255):
         """
         :param color_r: Color R
         :param color_g: Color G
@@ -19,7 +19,7 @@ class GenerateVerificationCode:
         """
         return random.randint(0, color_r), random.randint(0, color_g), random.randint(0, color_b)
 
-    def generate_picture(self, picture_width=175, picture_height=55):
+    def generate_picture(self, picture_width: int = 175, picture_height: int = 55):
         """
         :param picture_width: Image Width
         :param picture_height: Image Height
@@ -29,11 +29,18 @@ class GenerateVerificationCode:
 
     @staticmethod
     def generate_string():
+        """
+        :return: random choice num or char
+        """
         num = str(random.randint(0, 9))
         low_alpha = chr(random.randint(97, 122))
         return random.choice([num, low_alpha])
 
-    def generate_code_only_string(self, count):
+    def generate_code_only_string(self, count: int):
+        """
+        :param count: char count
+        :return: string
+        """
         temp = []
         for i in range(count):
             chars = self.generate_string()
@@ -41,10 +48,10 @@ class GenerateVerificationCode:
         valid = "".join(temp)
         return valid
 
-    def generate_code(self, count, image, font_size):
+    def generate_code(self, count: int, image, font_size: int):
         """
-        :param count: Code Count
-        :param image: draw Code Image
+        :param count: Code count, how many char in picture
+        :param image: Image to generate
         :param font_size: font's size
         :return: Code picture
         """
@@ -62,11 +69,15 @@ class GenerateVerificationCode:
         valid = "".join(temp)
         return valid, image
 
-    def generate_noise(self, image, picture_width=175, picture_height=55, line_count=3, point_count=15):
+    def generate_noise(self, image,
+                       picture_width: int = 175,
+                       picture_height: int = 55,
+                       line_count: int = 3,
+                       point_count: int = 15):
         """
-        :param image: Noise Image
-        :param picture_width: Image Width
-        :param picture_height: Image Hieght
+        :param image: Noise image
+        :param picture_width: Image width
+        :param picture_height: Image height
         :param line_count: Line's count
         :param point_count: Point's count
         :return: After Noise Image
@@ -92,7 +103,7 @@ class GenerateVerificationCode:
 
         return image
 
-    def generate_base64_image(self, code_count, font_size, save=False):
+    def generate_base64_image(self, code_count: int, font_size: int, save: bool = False):
 
         code_image = self.generate_picture()
         valid, code_image = self.generate_code(code_count, code_image, font_size)
