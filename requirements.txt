@@ -1,3 +1,4 @@
 Pillow
 matplotlib
 Numpy
+je_verification_code
