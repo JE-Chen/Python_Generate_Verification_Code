@@ -4,8 +4,8 @@ with open("README.md", "r") as README:
     long_description = README.read()
 
 setuptools.setup(
-    name="JEVerificationCode",
-    version="0.0.0.0.17",
+    name="je_verification_code",
+    version="0.0.0.0.1",
     author="JE-Chen",
     author_email="zenmailman@gmail.com",
     description="JE use VerificationCode Generate",

@@ -129,8 +129,8 @@ dmypy.json
 .pyre/
 
 # Myself edit
-/JEVerificationCode/Core/__pycache__/
-/JEVerificationCode/Module/__pycache__/
+/je_verification_code/core/__pycache__/
+/je_verification_code/modules/__pycache__/
 .idea/discord.xml
 .idea/vcs.xml
 .idea/Python_Generate_Verification_Code.iml

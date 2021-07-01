@@ -1,1 +1,0 @@
-from JEVerificationCode.Core import GenerateVerificationCode

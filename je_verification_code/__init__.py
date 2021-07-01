@@ -1,0 +1,1 @@
+from je_verification_code.modules.generate import GenerateVerificationCode

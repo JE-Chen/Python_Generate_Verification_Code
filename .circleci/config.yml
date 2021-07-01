@@ -14,22 +14,14 @@ jobs:
             command: sudo apt-get install libfontconfig1
             name: Install Font
         - run:
-            command: pip install --user JEVerificationCode
-            name: pip JEVerificationCode
+      - run:
+          command: pip install --user -r requirements.txt
+          name: pip requirements
         - run:
-            command: pip install --user matplotlib
-            name: pip matplotlib
+            command: python test/test.py
+            name: test
         - run:
-            command: pip install --user Numpy
-            name: pip Numpy
-        - run:
-            command: pip install --user Pillow
-            name: pip Pillow
-        - run:
-            command: python Test/Test.py
-            name: Test
-        - run:
-            command: python Test/UnitTest.py
+            command: python test/unit_test.py
             name: UnitTest
 
 workflows:
